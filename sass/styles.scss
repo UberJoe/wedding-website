@@ -37,9 +37,8 @@ a:hover, a:focus {
   text-decoration: none;
 }
 body {
-  font-family: $sans-serif;
+  font-family: $serif;
   font-weight: $light;
-  color: $txt-primary;
   -webkit-text-size-adjust: 100%;
   //fix for iOS
 }
@@ -47,7 +46,7 @@ body {
   outline: none !important;
 }
 ul, ol {
-  margin: 0;
+  margin: 10px;
   padding: 0;
 }
 ul li {
@@ -250,39 +249,91 @@ Navigation
 /* ==========================================================================
 Hero
 ========================================================================== */
-.hero {
-  min-height: 750px;
-  background: url('../img/hero-min.jpg') center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  position: relative;
+.date {
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+  }
+}
 
-  /*.rsvp-btn {
-    position: absolute;
-    bottom: 100px;
-    left: 50%;
-  }*/
-  .down-arrow a {
-    color: $txt-light;
+.title {
+  #title-location {
+    font-size: 25px;
+    margin-bottom: 0;
   }
-  h1 {
-    color: $txt-light;
-    margin-bottom: 40px;
+  #title-date {
+    font-size: 18px;
+    margin-bottom: 0;
   }
-  p.intro {
-    color: $txt-light;
-    font-size: 20px;
-    font-weight: 300;
-    margin-bottom: 80px;
+  /* Tablets */
+  @media (max-width: 1199px) and (min-width: 768px) {
+    #title-location {
+      font-size: 14px;
+      line-height: 15px;
+    }
+    #title-date {
+      font-size: 12px;
+      line-height: 15px;
+    }
   }
+  /* Mobile */
+  @media (max-width: 767px) {
+    #title-location {
+      font-size: 12px;
+      line-height: 13px;
+    } 
+    #title-date {
+      font-size: 9px;
+      line-height: 13px;
+    }
+  }
+}
+
+/* Desktop */
+@media (min-width: 1200px) {
+  .hero {
+      min-height: 1200px;
+  }
+}
+
+/* Tablets */
+@media (max-width: 1199px) and (min-width: 768px) {
+  .hero {
+      min-height: 800px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .hero {
+      min-height: 70vh;
+  }
+}
+
+.hero {
+  position: relative;  // Ensure .hero is positioned to create a new stacking context
+  z-index: 0;          // Reset stacking context for .hero
+
+  background: url('../img/hero-min.jpg') center center;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+
   .hero-content {
-    padding-top: 40%;
+    position: relative;  
+    z-index: 2;
+
+    h1, p.intro, img {
+      position: relative;
+      z-index: 2;
+    }
   }
-  .hero-content img {
-    width: 55%;
-    margin-bottom: 12%;
+  .down-arrow a {
+    position: relative;
+    z-index: 2;
   }
 }
 .navigation {
@@ -293,7 +344,7 @@ Hero
 }
 .fixed {
   position: fixed;
-  background-color: rgba(55, 36, 40, .88);
+  background-color: #749BC2;
   z-index: 999;
   width: 100%;
 }
@@ -328,11 +379,11 @@ header {
       display: inline;
 
       a {
-        color: $txt-light;
+        color: $text-dark;
         padding-right: 25px;
 
         &:hover {
-          color: $accent-color;
+          color: $text-dark-hover;
         }
       }
       &:last-child a {
@@ -345,10 +396,10 @@ header {
       display: inline;
 
       a {
-        color: $txt-light;
+        color: $text-dark;
 
         &:hover {
-          color: $accent-color;
+          color: $text-dark-hover;
         }
       }
     }
@@ -364,10 +415,10 @@ header {
   }
 }
 .down-arrow {
-  color: #fff;
-  font-size: 30px;
+  color: $accent-color;
+  font-size: 50px;
   position: absolute;
-  bottom: 30px;
+  bottom: 100px;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -382,31 +433,31 @@ Social share buttons
 /* ==========================================================================
 Intro
 ========================================================================== */
-.intro span.icon {
+.venue span.icon {
   font-size: 40px;
   color: $accent-color;
   font-weight: bold;
 }
-.intro-icon {
+.venue-icon {
   display: inline-block;
   vertical-align: top;
   padding: 6px 0 0 0;
   margin-right: 20px;
   width: 40px;
 }
-.intro-content {
+.venue-content {
   display: inline-block;
   width: 80%;
 }
 
-#intro {
+#venue {
   padding-top: 40px;
   img {
     width: 100%;
     height: auto;
   }
 }
-#intro p {
+#venue p {
   text-align: center;
 }
 
@@ -548,99 +599,24 @@ Features-stack
   }
 }
 
-/* ==========================================================================
-.events
-========================================================================== */
-.events {
-  .leftcol {
-    padding-right: 100px;
-    border-right: solid 1px $keyline-color;
-  }
-  .rightcol {
-    padding-left: 100px;
-  }
-
-  .time {
-    font-size: 13px;
-    font-style: italic;
-    text-transform: lowercase;
-    color: $txt-primary;
-  }
-}
-
-/* ==========================================================================
-.blog
-========================================================================== */
-.blog {
-  padding-bottom: 120px;
-
+.accommodation {
   img {
     width: 100%;
     height: auto;
-    -moz-transition: all 300ms ease-in-out;
-    -o-transition: all 300ms ease-in-out;
-    -webkit-transition: all 300ms ease-in-out;
-    transition: all 300ms ease-in-out;
+    padding-bottom: 15px;
+    padding-top: 15px;
   }
-  h2 {
-    font-size: $blog-post-title;
-    color: $txt-accent;
-    font-weight: $semibold;
-    text-transform: uppercase;
-    margin-top: 35px;
-  }
-  .btn {
-    margin-top: 20px;
-  }
-  .blog-img-wrap {
-    position: relative;
-    overflow: hidden;
 
-    .overlay {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background-color: rgba($white-color, 0.5);
-      -moz-transition: all 300ms ease-in-out;
-      -o-transition: all 300ms ease-in-out;
-      -webkit-transition: all 300ms ease-in-out;
-      transition: all 300ms ease-in-out;
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-      filter: alpha(opacity=0);
-      opacity: 0;
-    }
-    i {
-      color: $white-color;
-      font-size: 20px;
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      top: 25px;
-      right: 35px;
+  a {
+    color: $text-dark;
+    text-decoration: underline;
+    &:hover {
+      color: $text-dark-hover;
     }
   }
-  .blog-img-wrap:hover img, .blog-img-wrap:focus img {
-    -moz-transform: scale(1.1);
-    -ms-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-  .blog-img-wrap:hover .overlay, .blog-img-wrap:focus .overlay {
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=1)";
-    filter: alpha(opacity=1);
-    opacity: 1;
-    z-index: 9;
-  }
-  figcaption i {
-    margin-left: 5px;
-    font-size: 15px;
-  }
-  figcaption a.blog-post-title {
-    color: $txt-primary;
-  }
-  figcaption a.blog-post-title:hover, figcaption a.blog-post-title:focus {
-    color: $txt-secondary;
+
+  ul li {
+    padding-bottom: 8px;
   }
 }
 
@@ -726,12 +702,12 @@ Engagement Pics
 Embed video
 ========================================================================== */
 #video-bg {
-  height: 300px;
+  height: 400px;
 }
 #video-content {
   width: 100%;
   height: 100%;
-  padding-top: 100px;
+  padding-top: 150px;
   position: relative;
   background: rgba(17, 17, 17, 0.5);
   text-align: center;
