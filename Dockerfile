@@ -22,11 +22,14 @@ RUN apt-get update -qq && \
 
 # Install node modules
 COPY package-lock.json package.json ./
-RUN npm ci
 
 # Copy application code
 COPY . .
 
+RUN npm install -g gulp-cli
+RUN npm ci
+
+RUN gulp
 
 # Final stage for app image
 FROM base
