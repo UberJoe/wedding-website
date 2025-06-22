@@ -19,14 +19,22 @@
   "license": "GPL-3.0",
   "homepage": "https://github.com/rampatra/wedding-website",
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.8",
     "animate.css": "^3.7.2",
     "express": "^4.21.1",
+    "flowbite": "^3.1.2",
     "font-awesome": "^4.7.0",
     "gulp": "^5.0.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^5.0.0",
     "gulp-uglify": "^3.0.2",
-    "sass": "^1.25.0",
-    "waypoints": "^4.0.1"
-  }
+    "sass": "^1.89.1",
+    "waypoints": "^4.0.1",
+    "@tailwindcss/postcss": "^4.1.8",
+    "autoprefixer": "^10.4.21",
+    "gulp-postcss": "^10.0.0",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^4.1.8"
+  },
+  "devDependencies": {}
 }

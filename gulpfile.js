@@ -2,20 +2,24 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-sass')(require('sass'));
-var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var postcss = require('gulp-postcss');
+var uglify = require('gulp-uglify');
+var tailwindcss = require('@tailwindcss/postcss');
+var autoprefixer = require('autoprefixer');
 
-// compile scss to css
+// Compile SCSS, process Tailwind, autoprefixer, and minify
 gulp.task('sass', function () {
-    return gulp.src('./sass/styles.scss')
-        .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-        .pipe(rename({basename: 'styles.min'}))
-        .pipe(gulp.dest('./css'));
+  return gulp.src('./sass/styles.scss')
+    .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+    .pipe(postcss([tailwindcss(), autoprefixer()]))
+    .pipe(rename({ basename: 'styles.min' }))
+    .pipe(gulp.dest('./css'));
 });
 
-// watch changes in scss files and run sass task
+// Watch SCSS changes
 gulp.task('sass:watch', function () {
-    gulp.watch('./sass/**/*.scss', ['sass']);
+  gulp.watch('./sass/**/*.scss', gulp.series('sass'));
 });
 
 // minify js

@@ -2,11 +2,34 @@
 
 $section-padding: 40px 0;
 
-section.features-extra, section.rsvp, section.date, section.title, section.borders, section.accommodation, footer {
+section.features-extra, section.rsvp, section.date, section.title, section.nav, section.travel, section.faq, footer {
 	background: $section-light;
 	color: $text-dark;
+	a {
+		color: $text-dark;
+		text-decoration: underline;
+		&:hover {
+		  color: $text-dark-hover;
+		}
+	}
+	hr {
+		border-color: $text-dark;
+	}
 }
-section.features, section.events, section.blog, section.travel, section.itinerary {
+
+section.features, section.events, section.blog, section.itinerary, section.accommodation, section.party {
 	background: $section-dark;
 	color: $text-light;
+
+	a {
+		color: $text-light;
+		text-decoration: underline;
+		&:hover {
+		  color: $text-light-hover;
+		}
+	}
+
+	hr {
+		border-color: $text-light;
+	}
 }

@@ -10,8 +10,9 @@
 	border-radius: 0;
 	-moz-border-radius: 0;
 	-webkit-border-radius: 0;
-	color: $accent-color-hover;
-	font-family: 'Sao Torpes';
+	color: $txt-light;
+	font-family: $sans-serif;
+  	font-weight: $bold;
 }
 .btn:hover, .btn:focus {
 	color: $accent-color;

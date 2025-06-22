@@ -3,10 +3,10 @@
 
 // Fonts
 
-@font-face {
-  font-family: 'Camera Obscura';
-  src: url('../fonts/CameraObscuraDEMO.otf') format('opentype');
-}
+// @font-face {
+//   font-family: 'Camera Obscura';
+//   src: url('../fonts/CameraObscuraDEMO.otf') format('opentype');
+// }
 
 @font-face {
   font-family: 'Stardom';
@@ -36,131 +36,72 @@ $bold: 700;
 /* Select the min and max screen sizes you are working with */  
 
 $screen-min-width:30;
-$screen-max-width:120;
+$screen-max-width:240;
 
 /* Select the min and max font-sizes for each header type */  
 
-$h1-min-size:3.0;
-$h1-max-size:15.0;
+$h1-min-size:6.0;
+$h1-max-size:40.0;
 
-$h2-min-size:2.0;
-$h2-max-size:6.0;
+$h2-min-size:4.0;
+$h2-max-size:16.0;
 
 $h3-min-size:2;
-$h3-max-size:3;
+$h3-max-size:4;
 
 $h4-min-size:1;
-$h4-max-size:2;
+$h4-max-size:3;
 
-/* FONT SCALING CALCULATIONS - DON'T NEED TO EDIT */  
-$h1-slope: calc((($h1-max-size) - ($h1-min-size)) / (($screen-max-width) - ($screen-min-width)));
-$h2-slope: calc((($h2-max-size) - ($h2-min-size)) / (($screen-max-width) - ($screen-min-width)));
-$h3-slope: calc((($h3-max-size) - ($h3-min-size)) / (($screen-max-width) - ($screen-min-width)));
-$h4-slope: calc((($h4-max-size) - ($h4-min-size)) / (($screen-max-width) - ($screen-min-width))); 
+$p-min-size:1.0;
+$p-max-size:4.0;
 
-$h1-intersection: calc((-1 * ($screen-min-width) * ($h1-slope)) + ($h1-min-size));
-$h2-intersection: calc((-1 * ($screen-min-width) * ($h2-slope)) + ($h2-min-size));
-$h3-intersection: calc((-1 * ($screen-min-width) * ($h3-slope)) + ($h3-min-size));
-$h4-intersection: calc((-1 * ($screen-min-width) * ($h4-slope)) + ($h4-min-size));   
+/* FONT SCALING CALCULATIONS - NO LONGER USED */
 
-$h1-preferred: calc(($h1-intersection) + (($h1-slope) * 100));
-$h2-preferred: calc(($h2-intersection) + (($h2-slope) * 100));
-$h3-preferred: calc(($h3-intersection) + (($h3-slope) * 100));
-$h4-preferred: calc(($h4-intersection) + (($h4-slope) * 100));  
+// Removed intermediate rem conversion variables for clarity
 
-$h1-min: calc(($h1-min-size) * 1rem);
-$h1-mid: calc(($h1-preferred) * 1vw);
-$h1-max: calc(($h1-max-size) * 1rem);
-
-$h2-min: calc(($h2-min-size) * 1rem);
-$h2-mid: calc(($h2-preferred) * 1vw);
-$h2-max: calc(($h2-max-size) * 1rem);
-
-$h3-min: calc(($h3-min-size) * 1rem);
-$h3-mid: calc(($h3-preferred) * 1vw);
-$h3-max: calc(($h3-max-size) * 1rem);
-
-$h4-min: calc(($h4-min-size) * 1rem);
-$h4-mid: calc(($h4-preferred) * 1vw);
-$h4-max: calc(($h4-max-size) * 1rem);
-
-$font-size-h1: clamp(($h1-min), ($h1-mid), ($h1-max));
-$font-size-h2: clamp(($h2-min), ($h2-mid), ($h2-max));
-$font-size-h3: clamp(($h3-min), ($h3-mid), ($h3-max));
-$font-size-h4: clamp(($h4-min), ($h4-mid), ($h4-max));
-
-// $font-size-h1: clamp(2rem, 8vw + 1rem, 20rem);
-// $font-size-h2: 40px;
-// $font-size-h3: clamp(1.5rem, 1vw + 0.8rem, 4rem); 
-// $font-size-h4: 24px;
-$font-size-h5: 16px;
-$font-size-p: 18px; //clamp(1rem, 1vw + 0.4rem, 2.5rem)
-$nav-font-size: 13px;
-$blog-post-title: 11px;
-
-// Responsive Sizes
-
-$responsive-h1: 40px;
-
-// Line height
-
-$base-line-height: 29px;
-
-// Styles
-
-/* ==========================================================================
-Typography
-========================================================================== */
-
-p {
-  font-size: $font-size-p;
-  font-family: $serif;
-  line-height: $base-line-height;
-}
-/* Tablets */
-@media (max-width: 1199px) and (min-width: 768px) {
-  p {
-    font-size: 14px;
-    line-height: 24px;
-  }
-}
-/* Mobile */
-@media (max-width: 767px) {
-  p {
-    font-size: 12px;
-    line-height: 20px;
-  }
-}
+$p-font-size: clamp(#{$p-min-size}rem, 0.4vw + 0.9rem, #{$p-max-size}rem);
 
 h1 {
+  font-size: clamp(#{$h1-min-size}rem, 8vw + 1rem, #{$h1-max-size}rem);
   font-family: $sans-serif;
-  font-size: $font-size-h1;
+  font-weight: $normal;
 }
 
 h2 {
-  font-size: $font-size-h2;
-  font-weight: $bold;
+  font-size: clamp(#{$h2-min-size}rem, 2.5vw + 0.5rem, #{$h2-max-size}rem);
   font-family: $sans-serif;
+  font-weight: $bold;
 }
 
 h3 {
+  font-size: clamp(#{$h3-min-size}rem, 2vw + 0.5rem, #{$h3-max-size}rem);
   font-family: $sans-serif;
-  font-size: $font-size-h3;
   font-weight: $bold;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  line-height: $base-line-height;
 }
 
 h4 {
+  font-size: clamp(#{$h4-min-size}rem, 1.5vw + 0.25rem, #{$h4-max-size}rem);
   font-family: $sans-serif;
-  font-size: $font-size-h4;
   font-weight: $bold;
 }
 
-h5 {
-  font-family: $sans-serif;
-  font-size: $font-size-h5;
-  text-transform: uppercase;
+p {
+  font-size: $p-font-size;
+  font-family: $serif;
+  font-weight: $normal;
+  line-height: 1.6;
+}
+
+a {
+  font-size: $p-font-size;
+  font-family: $serif;
   font-weight: $semibold;
+  text-decoration: underline;
+}
+
+span {
+  font-size: $p-font-size;
+  font-family: $serif;
+  font-weight: $normal;
+  line-height: 1.6;
 }

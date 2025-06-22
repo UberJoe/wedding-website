@@ -21,6 +21,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.manifest">
+    <link href="node_modules/flowbite/dist/flowbite.min.css" rel="stylesheet" />
+    <script src="node_modules/flowbite/dist/flowbite.min.js"></script>
 
     <script>
         // load css files from CDN if local node_modules fail
@@ -36,15 +38,6 @@
 
             // add link tag to head section
             document.getElementsByTagName('head')[0].appendChild(link);
-        }
-
-        // load js files from CDN if local node_modules fail
-        function loadJsFromCDN(js) {
-            if (js === 'waypoints.js') {
-                document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"><\/script>');
-            } else if (js === 'jquery.js') {
-                document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>');
-            }
         }
     </script>
 
@@ -64,21 +57,10 @@
     your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<!-- Sections -->
-<!-- 
-    Hero
-    Date (small section)
-    Venue (image)
-    Schedule
-    Wedding party 
-    Sevilla
-    rsvp
--->
-
 <section id="title" class="section-padding title" >
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div class="hero-content text-center">
+            <div class="title-content text-center">
                 <h1>Eve & Joe</h1>
                 <p id="title-location">Villa Luisa, Sevilla, España</p>
                 <!-- <p>25.10.25</p> -->
@@ -92,8 +74,20 @@
     </div>
 </section>
 
-<section class="borders">
+<section class="nav">
     <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="horizontal-list">
+                    <li><a href="#itinerary">Itinerary</a></li>
+                    <li><a href="#rsvp">RSVP</a></li>
+                    <li><a href="#travel">Travel & Accommodation</a></li>
+                    <li><a href="#faq">FAQs</a></li>
+                    <li><a href="#party">Wedding Party</a></li>
+                    <li><a href="#recommendations">Recs</a></li>
+                </ul>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-10 hero"></div>
@@ -115,26 +109,180 @@
     </div>
 </section>
 
-<section id="travel" class="travel section-padding">
+<section id="itinerary" class="itinerary section-padding">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <h3 class="header">Travel</h3>
+                <h2>Itinerary</h2>
+                <p>Final timings will be confirmed closer to the event (check back in the summer), but the key events will be as follows:</p>
             </div>
         </div>
+
+        <div class="row hidden-xs">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5"><hr></div>
+            <div class="col-sm-5"><hr></div>
+            <div class="col-sm-1"></div>
+        </div>
+
         <div class="row">
-            <div class="col-lg-2 col-xs-1"></div>
-            <div class="col-lg-8 col-xs-10">
-                <p>Most UK airlines fly to Seville airport (SVQ) – British Airways and EasyJet via London Gatwick, and Ryanair via London Stansted. Seville airport is just a 20-minute drive from the city centre. It typically costs between 12-20 euros in an Uber or local taxi. Alternatively, there is an airport shuttle bus to the city centre for a few euros. </p>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5 text-center">
+                <h3>Welcome Drinks</h3>
+                <p>Friday 24<sup>th</sup> October</p>
+                <ul>
+                    <li><h4>Venue</h4><p>TBC</p></li>
+                    <li><h4>Time</h4><p>TBC</p></li>
+                </ul>
+                <p>Welcome drinks in the early evening for those already in Sevilla. Venue and timings TBC.</p>
             </div>
-            <div class="col-lg-2 col-xs-1"></div>
+            <div class="col-xs-12 visible-xs-block"><hr></div>
+            <div class="col-sm-5 text-center">
+                <h3>Wedding day</h3>
+                <p>Saturday 25<sup>th</sup> October</p>
+                <ul>
+                    <li><h4>15:00</h4><p>Ceremony starts</p></li>
+                    <li><h4>16:00</h4><p>Drinks reception</p></li>
+                    <li><h4>18:00</h4><p>Dinner and speeches</p></li>
+                </ul>
+                <p>Party starts after dinner. We have the venue until 6AM so no early nights are allowed! Make sure you have a lie-in!</p>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+
+        <div class="row hidden-xs">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5"><hr></div>
+            <div class="col-sm-5"><hr></div>
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+</section>
+
+<section id="rsvp" class="rsvp section-padding">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <div class="max-w-full mx-auto px-4 py-8">
+                    <h2 class="text-center">RSVP</h2>
+                    <form id="rsvpForm" action="/submit" method="POST" class="w-full max-w-full">
+
+                        <!-- Names -->
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="md:w-1/2 mb-6 md:mb-0">
+                                <label>
+                                    <span>First Name:</span>
+                                </label>
+                                <input name="firstname" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="First Name">
+                            </div>
+                            <div class="md:w-1/2 md:px-5">
+                                <label>
+                                    <span>Surname:</span>
+                                </label>
+                                <input name="surname" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Surname">
+                            </div>
+                        </div>
+
+                        <!-- Are you attending? -->
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full">
+                                <label>
+                                    <span>Are you attending?</span>
+                                </label>
+                                <div class="flex space-x-4">
+                                    <label class="inline-flex items-center">
+                                        <input name="attending" type="radio" name="attending" value="yes" class="form-radio">
+                                        <span class="px-2">Yes</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input name="attending" type="radio" name="attending" value="no" class="form-radio">
+                                        <span class="px-2">No</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dietary requirements -->
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full">
+                                <label>
+                                    <span>Do you have any dietary requirements?</span>
+                                </label>
+                                <input name="dietary" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Let us know...">
+                            </div>
+                        </div>
+
+                        <!-- Main dish -->
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full">
+                                <label>
+                                    <span>Please select your main dish:</span>
+                                </label>
+                                <div class="relative">
+                                    <select name="dish" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                        <option>Pork tenderloin with whiskey and garlic sauce (Solomillo al Whiskey)</option>
+                                        <option>Sea bass with potatoes, citrus butter, basil and pine nuts</option>
+                                        <option>Truffle and cheese ravioli with red pesto (Veggie)</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Drinks on Friday -->
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full">
+                                <label>
+                                    <span>For rough numbers, do you think you'll join us for drinks on the Friday?</span>
+                                </label>
+                                <div class="flex space-x-4">
+                                    <label class="inline-flex items-center">
+                                        <input name="drinks" type="radio" name="drinks" value="yes" class="form-radio">
+                                        <span class="px-2">Yes</span>
+                                    </label>
+                                    <label class="inline-flex items-center">
+                                        <input name="drinks" type="radio" name="drinks" value="no" class="form-radio">
+                                        <span class="px-2">No</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Security question -->
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full">
+                                <label>
+                                    <span>Security question: please enter either Eve or Joe's surname</span>
+                                </label>
+                                <input name="security" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Surname">
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="flex flex-wrap -mx-3">
+                            <div class="w-full">
+                                <button type="submit" class="btn w-1/2 mx-auto block">
+                                    Submit
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
         </div>
     </div>
 </section>
 
 <section id="video-bg" class="video-bg hidden-sm hidden-xs">
     <div id="bgndVideo" class="player"
-         data-property="{videoURL:'https://youtu.be/1GBE9Lbxoys',containment:'#video-bg',autoPlay:true, mute:true, showControls:false, startAt:10.3, stopAt:62.5, opacity:1}">
+         data-property="{videoURL:'https://youtu.be/1GBE9Lbxoys',containment:'#video-bg',autoPlay:true, mute:true, showControls:false, startAt:10.3, stopAt:55, opacity:1}">
     </div>
     <div id="video-content">
         <p>Our Venue</p>
@@ -142,11 +290,29 @@
     </div>
 </section>
 
+<section id="travel" class="travel section-padding">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <h2 class="header">Travel</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 col-xs-1"></div>
+            <div class="col-lg-8 col-xs-10">
+                <p>Most UK airlines fly to Seville airport (SVQ) – British Airways and EasyJet via London Gatwick, and Ryanair via London Stansted. Seville airport is just a 20-minute drive from the city centre. It typically costs between 12-20 euros in an Uber or local taxi. Alternatively, there is an airport shuttle bus to the city centre for a few euros. </p>
+                <p>If you want to pre-book airport transfers, although a bit pricier than Uber, check <a href="https://www.civitatis.com/en/seville/transfers/" target="_blank">Civitatis</a></p>
+            </div>
+            <div class="col-lg-2 col-xs-1"></div>
+        </div>
+    </div>
+</section>
+
 <section id="accommodation" class="accommodation section-padding">
     <div class="container-fluid">
         <div class="row">
             <div class="col-xs-12 text-center">
-                <h3 class="header">Accommodation</h3>
+                <h2 class="header">Accommodation</h2>
             </div>
         </div>
         <div class="row">
@@ -185,26 +351,105 @@
     </div>
 </section>
 
-<section id="itinerary" class="itinerary section-padding">
+<section id="faq" class="faq section-padding text-center">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12 text-center">
-                <h3>Itinerary</h3>
-                <p>Final timings will be confirmed next year, but the key events will be as follows:</p>
+            <div class="col-xs-12">
+                <h2>FAQs</h2>
             </div>
         </div>
+        <div class="row hidden-xs">
+            <div class="col-sm-6 col-sm-offset-3"><hr></div>
+        </div>
         <div class="row">
-            <div class="col-sm-3 col-sm-offset-2">
-                <h4>Wednesday 22<sup>nd</sup> October</h4>
-                <p>Eve and Joe arrive in Sevilla. We'll be eating tapas, so please find us if you're around!</p>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+                <h4>How do I RSVP?</h4>
+                <p>Please RSVP via this website, by clicking on the 'RSVP' tab and completing the short form.</p>
             </div>
-            <div class="col-sm-3">
-                <h4>Friday 24<sup>th</sup> October</h4>
-                <p>Welcome Drinks in the evening, for those already in Sevilla.</p>
+            <div class="col-sm-5">
+                <h4>What is the dress code?</h4>
+                <p>Our wedding will be a black-tie occasion, meaning tuxedos, dinner jackets and evening dresses. Spanish weddings are typically glam, evening events. Some inspiration for Spanish black-tie weddings <a href="https://pin.it/jMfXU8Qir" target="_blank">here</a>.</p>
+                <p>Please note, the ceremony, drinks and dinner will be held outdoors (weather dependent). The evening dancing will be indoors. In October in Seville, it should be around 22-25 degrees during the day, and around 15 degrees in the evening.</p>
             </div>
-            <div class="col-sm-3">
-                <h4>Saturday 25<sup>th</sup> October</h4>
-                <p>Wedding to start in the afternoon, party until the early hours.</p>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+                <h4>What colour are the bridesmaids wearing?</h4>
+                <p>The bridesmaids will be wearing pale blue. </p>
+            </div>
+            <div class="col-sm-5">
+                <h4>Are children welcome?</h4>
+                <p>We hope you will understand that we are keeping our special day as an adult-only occasion.</p>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+                <h4>Why Seville?</h4>
+                <p>Eve lived and studied in Seville during university and so we spent many wonderful weekends exploring the city together. We also got engaged here. Now, 10 years later – we feel very lucky to be able to host our wedding in this amazing city, and we cannot wait to share it with all the people we love the most.</p>
+            </div>
+            <div class="col-sm-5">
+                <h4>Is there a gifts registry?</h4>
+                <p>No. As you are all travelling to celebrate with us, we are not having a gift registry or expecting any gifts at all. We are so honoured that you will join us in Seville to celebrate. If you insist, we would appreciate contributions to our honeymoon. </p>
+            </div>
+            <div class="col-sm-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-5">
+                <h4>Do I have a plus one?</h4>
+                <p>All invited guests are named on the invitations so please check these.</p>
+            </div>
+            <div class="col-sm-5">
+                <h4>How should I get to the wedding venue?</h4>
+                <p>There is no parking available at the venue, but it is close to the city centre so we recommend taxis/Ubers.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="party" class="party section-padding">
+    <div class="container-fluid">
+        <div class="grid grid-cols-4 gap-4">
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="./img/party/boof.png" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="./img/party/tom.png" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="./img/party/jack.png" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="./img/party/maeve.png" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="./img/party/becki.png" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="./img/party/wedding_party_text.png" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="./img/party/henry.png" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="./img/party/ellie.png" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="./img/party/adam.png" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="./img/party/kc.png" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="./img/party/kristian.png" alt="">
+            </div>
+            <div>
+                <img class="h-auto max-w-full rounded-lg" src="./img/party/babs.png" alt="">
             </div>
         </div>
     </div>
@@ -215,7 +460,7 @@
         <div class="row">
             <div class="col-sm-12 text-center content">
                 <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
-                <p>More info and RSVP to follow... </p>
+                <p>Let us know if you have any questions! </p>
             </div>
         </div>
     </div>

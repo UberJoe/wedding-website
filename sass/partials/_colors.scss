@@ -5,7 +5,7 @@ $txt-primary: #F7717D;
 // body font
 $txt-secondary: #a7c3dc;
 // heading font
-$txt-light: #a7c3dc;
+$txt-light: #4a5979;
 // header/hero
 $txt-accent: #a7c3dc;
 $form-placeholder: #a7c3dc;
@@ -18,8 +18,9 @@ $accent-color-hover: #f4eddf;
 $white-color: #f4eddf;
 $black-color: #000;
 // Typography colours
-$text-light: #f4eddf;
-$text-dark: #a7c3dc;
+$text-light: #4a5979;
+$text-light-hover: darken($text-light, 10%);
+$text-dark: #4a5979;
 $text-dark-hover: #4897db;
 $h2-color: #F7717D;
 $h3-color: #F7717D;

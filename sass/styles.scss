@@ -2,12 +2,15 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800);
 @import url(https://fonts.googleapis.com/css?family=Merriweather:400,300,400italic,300italic,700,700italic);
 @import url(https://fonts.googleapis.com/css?family=Nunito:400,300,700);
-// Imports
-//@import "compass";
 @import "partials/typography";
 @import "partials/buttons";
 @import "partials/colors";
 @import "partials/layout";
+// Imports
+//@import "compass";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* ==========================================================================
 Global Styles
@@ -295,6 +298,9 @@ Hero
   .hero {
       min-height: 1200px;
   }
+  .horizontal-list {
+    gap: 3rem;
+  }
 }
 
 /* Tablets */
@@ -302,12 +308,21 @@ Hero
   .hero {
       min-height: 800px;
   }
+  .horizontal-list {
+    gap: 2rem;
+  }
 }
 
 /* Mobile */
 @media (max-width: 767px) {
   .hero {
-      min-height: 70vh;
+      min-height: 60svh;
+  }
+  .horizontal-list {
+    gap: 1rem;
+  }
+  .horizontal-list a {
+      font-size: 8px;
   }
 }
 
@@ -322,19 +337,29 @@ Hero
   background-size: contain;
   background-repeat: no-repeat;
 
-  .hero-content {
-    position: relative;  
-    z-index: 2;
-
-    h1, p.intro, img {
-      position: relative;
-      z-index: 2;
-    }
-  }
   .down-arrow a {
     position: relative;
     z-index: 2;
   }
+}
+.horizontal-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;        /* Prevents wrapping */
+  overflow-x: auto;         /* Enables horizontal scroll if needed */
+  justify-content: center; /* Aligns items to the left so it can scroll */
+  padding: 0 1rem;
+  margin: 0 0 1rem 0;
+  -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
+  scrollbar-width: none;           /* Firefox hide scrollbar */
+}
+
+.horizontal-list::-webkit-scrollbar {
+  display: none;                  /* Hide scrollbar in WebKit browsers */
+}
+
+.horizontal-list li {
+  white-space: nowrap;            /* Prevent line breaks in long items */
 }
 .navigation {
   transition: all 300ms ease-in-out;
@@ -359,7 +384,7 @@ header {
   a {
     color: $txt-light;
     text-transform: uppercase;
-    font-size: $nav-font-size;
+    font-size: $p-font-size;
 
     &.login {
       margin-right: 20px;
@@ -599,6 +624,12 @@ Features-stack
   }
 }
 
+.itinerary {
+  ul li {
+    list-style-position: inside;
+  }
+}
+
 .accommodation {
   img {
     width: 100%;
@@ -765,13 +796,12 @@ RSVP form
 ========================================================================== */
 .rsvp {
   padding-bottom: 140px;
-  .rsvp-form {
-    .rsvp-btn {
+  .rsvp-btn {
       padding: 15px 0;
       border-radius: 3px;
       width: 100%;
-      font-size: 13px;
     }
+  .rsvp-form {
     .form-input-group {
       width: 100%;
       height: 55px;
