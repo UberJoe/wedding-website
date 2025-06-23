@@ -63,7 +63,7 @@ span {
 }
 .btn:hover,.btn:focus {
   color: #a7c3dc;
-  background-color: #f4eddf;
+  background-color: #4a5979;
 }
 .btn-white {
   font-size: 13px;
@@ -98,32 +98,32 @@ span {
 .btn-margin-right {
   margin-right: 20px;
 }
-section.features-extra,section.rsvp,section.date,section.title,section.nav,section.travel,section.faq,footer {
+section.features-extra,section.rsvp,section.date,section.title,section.nav,section.travel,section.faq,section.recommendations {
   background: #f4eddf;
   color: #4a5979;
 }
-section.features-extra a,section.rsvp a,section.date a,section.title a,section.nav a,section.travel a,section.faq a,footer a {
+section.features-extra a,section.rsvp a,section.date a,section.title a,section.nav a,section.travel a,section.faq a,section.recommendations a {
   color: #4a5979;
   text-decoration: underline;
 }
-section.features-extra a:hover,section.rsvp a:hover,section.date a:hover,section.title a:hover,section.nav a:hover,section.travel a:hover,section.faq a:hover,footer a:hover {
+section.features-extra a:hover,section.rsvp a:hover,section.date a:hover,section.title a:hover,section.nav a:hover,section.travel a:hover,section.faq a:hover,section.recommendations a:hover {
   color: #4897db;
 }
-section.features-extra hr,section.rsvp hr,section.date hr,section.title hr,section.nav hr,section.travel hr,section.faq hr,footer hr {
+section.features-extra hr,section.rsvp hr,section.date hr,section.title hr,section.nav hr,section.travel hr,section.faq hr,section.recommendations hr {
   border-color: #4a5979;
 }
-section.features,section.events,section.blog,section.itinerary,section.accommodation,section.party {
+section.features,section.events,section.blog,section.itinerary,section.accommodation,section.party,footer {
   background: #a7c3dc;
   color: #4a5979;
 }
-section.features a,section.events a,section.blog a,section.itinerary a,section.accommodation a,section.party a {
+section.features a,section.events a,section.blog a,section.itinerary a,section.accommodation a,section.party a,footer a {
   color: #4a5979;
   text-decoration: underline;
 }
-section.features a:hover,section.events a:hover,section.blog a:hover,section.itinerary a:hover,section.accommodation a:hover,section.party a:hover {
+section.features a:hover,section.events a:hover,section.blog a:hover,section.itinerary a:hover,section.accommodation a:hover,section.party a:hover,footer a:hover {
   color: rgb(54.6461538462,65.7230769231,89.3538461538);
 }
-section.features hr,section.events hr,section.blog hr,section.itinerary hr,section.accommodation hr,section.party hr {
+section.features hr,section.events hr,section.blog hr,section.itinerary hr,section.accommodation hr,section.party hr,footer hr {
   border-color: #4a5979;
 }
 .pointer-events-none {
@@ -521,6 +521,44 @@ section .header {
 .hero .down-arrow a {
   position: relative;
   z-index: 2;
+}
+.venueimg {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 300px;
+  background: url("../img/villa-luisa-img.jpg") center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #fff;
+  padding: 2rem;
+}
+.venueimg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 0;
+}
+#venue-img-content {
+  width: 100%;
+  padding-top: 100px;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+#venue-img-content h5 {
+  color: #fff;
+  font-size: 30px;
+  font-weight: 300;
+  letter-spacing: 10px;
+}
+#venue-img-content p {
+  color: #fff;
+}
+#venue-img-content h5,#venue-img-content p {
+  position: relative;
+  z-index: 1;
 }
 .horizontal-list {
   list-style: none;

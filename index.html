@@ -63,7 +63,6 @@
             <div class="title-content text-center">
                 <h1>Eve & Joe</h1>
                 <p id="title-location">Villa Luisa, Sevilla, España</p>
-                <!-- <p>25.10.25</p> -->
                 <p id="title-date">25 October 2025</p>
                 <!-- <div class="col-sm-5"></div>
                 <div class="col-sm-2 text-center">
@@ -162,21 +161,21 @@
 <section id="rsvp" class="rsvp section-padding">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3"></div>
-            <div class="col-sm-6">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
                 <div class="max-w-full mx-auto px-4 py-8">
                     <h2 class="text-center">RSVP</h2>
                     <form id="rsvpForm" action="/submit" method="POST" class="w-full max-w-full">
 
                         <!-- Names -->
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="md:w-1/2 mb-6 md:mb-0">
+                        <div class="flex flex-wrap -mx-5 mb-6">
+                            <div class="sm:w-full md:w-1/2 mb-6 md:mb-0 px-5">
                                 <label>
                                     <span>First Name:</span>
                                 </label>
                                 <input name="firstname" required class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="First Name">
                             </div>
-                            <div class="md:w-1/2 md:px-5">
+                            <div class="sm:w-full md:w-1/2 px-5">
                                 <label>
                                     <span>Surname:</span>
                                 </label>
@@ -185,8 +184,8 @@
                         </div>
 
                         <!-- Are you attending? -->
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full">
+                        <div class="flex flex-wrap -mx-5 mb-6">
+                            <div class="w-full px-5">
                                 <label>
                                     <span>Are you attending?</span>
                                 </label>
@@ -204,18 +203,18 @@
                         </div>
 
                         <!-- Dietary requirements -->
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full">
+                        <div class="flex flex-wrap -mx-5 mb-6">
+                            <div class="w-full px-5">
                                 <label>
                                     <span>Do you have any dietary requirements?</span>
                                 </label>
-                                <input name="dietary" value="No" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Let us know...">
+                                <input name="dietary" value="No" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Let us know...">
                             </div>
                         </div>
 
                         <!-- Main dish -->
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full">
+                        <div class="flex flex-wrap -mx-5 mb-6">
+                            <div class="w-full px-5">
                                 <label>
                                     <span>Please select your main dish:</span>
                                 </label>
@@ -235,8 +234,8 @@
                         </div>
 
                         <!-- Drinks on Friday -->
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full">
+                        <div class="flex flex-wrap -mx-5 mb-6">
+                            <div class="w-full px-5">
                                 <label>
                                     <span>For rough numbers, do you think you'll join us for drinks on the Friday?</span>
                                 </label>
@@ -254,8 +253,8 @@
                         </div>
 
                         <!-- Email -->
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full">
+                        <div class="flex flex-wrap -mx-5 mb-6">
+                            <div class="w-full px-5">
                                 <label>
                                     <span>Email address:</span>
                                 </label>
@@ -264,8 +263,8 @@
                         </div>
 
                         <!-- Security question -->
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full">
+                        <div class="flex flex-wrap -mx-5 mb-6">
+                            <div class="w-full px-5">
                                 <label>
                                     <span>Security question: please enter either Eve or Joe's surname</span>
                                 </label>
@@ -274,18 +273,18 @@
                         </div>
 
                         <!-- Submit -->
-                        <div class="flex flex-wrap -mx-3">
-                            <div class="w-full">
+                        <div class="flex flex-wrap -mx-5">
+                            <div class="w-full px-5">
                                 <button type="submit" class="btn w-1/2 mx-auto block">
                                     Submit
                                 </button>
                             </div>
                         </div>
-                        <div class="flex flex-wrap -mx-3 text-center"><p id="responseMessage"></p></div>
+                        <div class="flex flex-wrap -mx-5 text-center"><p id="responseMessage" class="px-5"></p></div>
                     </form>
                 </div>
             </div>
-            <div class="col-sm-3"></div>
+            <div class="col-lg-3"></div>
         </div>
     </div>
 </section>
@@ -295,6 +294,13 @@
          data-property="{videoURL:'https://youtu.be/1GBE9Lbxoys',containment:'#video-bg',autoPlay:true, mute:true, showControls:false, startAt:10.3, stopAt:55, opacity:1}">
     </div>
     <div id="video-content">
+        <p>Our Venue</p>
+        <h5>Villa Luisa</h5>
+    </div>
+</section>
+
+<section id="villa-luisa" class="hidden-md hidden-lg hidden-xl">
+    <div id="venue-img-content" class="venueimg hidden-md hidden-lg hidden-xl">
         <p>Our Venue</p>
         <h5>Villa Luisa</h5>
     </div>
@@ -460,6 +466,93 @@
             </div>
             <div>
                 <img class="h-auto max-w-full rounded-lg" src="./img/party/babs.png" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="recommendations" class="recommendations section-padding">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2 class="text-center">Sevilla Recommendations</h2>
+            </div>
+        </div>
+        <div class="row hidden-xs">
+            <div class="col-sm-6 col-sm-offset-3"><hr></div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <h4 class="text-center">Tourist attractions</h4>
+                <p>If you are spending a couple of days enjoying Sevilla alongside our wedding festivities, our favourites are as follows:</p>
+                <ul>
+                    <li>
+                        <p><strong>Royal Alcázar of Seville</strong></p>
+                        <p>Gorgeous historic royal palace with amazing gardens. Make sure to prebook your entry tickets online <a target="_blank" href="https://alcazarsevilla.org/ ">here</a>.</p>
+                    </li>
+                    <li>
+                        <p><strong>Cathedral of Seville</strong></p>
+                        <p>The largest Gothic church in the world. Climb the Giralda tower for amazing views. You can <a target="_blank" href="https://catedraldesevilla.entradasdemuseos.com/">pre-book tickets online</a> for faster entry, or queue on the day.</p>
+                    </li>
+                    <li>
+                        <p><strong>Plaza de España</strong></p>
+                        <p>Not far from our venue, the <a target="_blank" href="https://www.andalucia.org/es/sevilla-visitas-plaza-de-espana">Plaza de España</a> is a must-visit monument. No tickets needed.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-5">
+                <h4 class="text-center">Restaurants</h4>
+                <p>Whilst in Seville, you have to try the local delicacy ‘solomillo al whiskey’ which is pork tenderloin cooked in garlic and whiskey, it is so tasty.</p>
+                <ul>
+                    <li>
+                        <p><a target="_blank" href="https://www.barlasacristia.eu">La Sacrístia</a> - cheap and cheerful, our absolute favourite for tapas.</p>
+                    </li>
+                    <li>
+                        <p><a target="_blank" href="https://antiguedadesbar.com">Antiguedades Bar de Tapas</a> - Our second favourite tapas place.</p>
+                    </li>
+                    <li>
+                        <p><a href="https://www.universalpeoplebar.com">Universal Peoples Bar</a> - another good cheap and cheerful tapas place with big portions.</p>
+                    </li>
+                    <li>
+                        <p><a href="https://www.enasevilla.com/en/">Ena</a> - a restaurant within the Hotel Alfonso XIII  – Ena is a small terrace restaurant with good tapas and lovely cocktails in a beautiful setting.</p>
+                    </li>
+                    <li>
+                        <p><a href="https://filosevilla.es">Filo</a> - is our favourite lunch place - good for when you want a sandwich/salad lunch, rather than tapas for every meal.</p>
+                    </li>
+                    <li>
+                        <p><a href="https://www.instagram.com/labarracatalina">Catalina la Barra</a> - another great lunch/tapas place – they do sandwiches & glasses of vino that are cheap and delicious.</p>
+                    </li>
+                    <li>
+                        <p><a href="https://www.mercadodelbarranco.com/">Mercado del Barranco</a> - covered market, with tapas, seafood, pastries and of course wine and beers.</p>
+                    </li>
+                    <li>
+                        <p><a href="https://kukuchurro.com/en/">Kukuchurro</a> - is a delish churros place, open late, and there are a few dotted around the city centre.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+                <h4 class="text-center">Drinks</h4>
+                <ul>
+                    <li><p><a target="_blank" href="https://www.emecatedralmercer.com/en">Hotel EME</a> - by the cathedral has a rooftop bar – best view of the cathedral & great cocktails</p></li>
+                </ul>
+                <ul>
+                    <li><p><a target="_blank" href="https://www.morecravings.com/es/venues/ena-sevilla">Ena</a> - within the Hotel Alfonso XIII, on the gorgeous terrace.</p></li>
+                </ul>
+                <ul>
+                    <li><p><a target="_blank" href="https://www.instagram.com/thesecondroomsevilla">The Second Room</a> - cocktail bar near the cathedral with two happy hours, €6 caipirinhas! </p></li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <h4 class="text-center">Basics</h4>
+                    <ul>
+                        <li><p>If you need a bigger supermarket for toiletries or groceries to fill up on Paprika crisps go to the El Corte Ingles department stores. You can find them <a target="_blank" href="https://maps.app.goo.gl/WrgUStSeoE38F3EE6">here</a> and <a target="_blank" href="https://maps.app.goo.gl/XnwY21okB2nMnopj6">here.</a></p></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

@@ -2,7 +2,7 @@
 
 $section-padding: 40px 0;
 
-section.features-extra, section.rsvp, section.date, section.title, section.nav, section.travel, section.faq, footer {
+section.features-extra, section.rsvp, section.date, section.title, section.nav, section.travel, section.faq, section.recommendations {
 	background: $section-light;
 	color: $text-dark;
 	a {
@@ -17,7 +17,7 @@ section.features-extra, section.rsvp, section.date, section.title, section.nav, 
 	}
 }
 
-section.features, section.events, section.blog, section.itinerary, section.accommodation, section.party {
+section.features, section.events, section.blog, section.itinerary, section.accommodation, section.party, footer {
 	background: $section-dark;
 	color: $text-light;
 
