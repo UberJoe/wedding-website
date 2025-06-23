@@ -206,64 +206,66 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Dietary requirements -->
-                        <div class="flex flex-wrap -mx-5 mb-6">
-                            <div class="w-full px-5">
-                                <label>
-                                    <span>Do you have any dietary requirements?</span>
-                                </label>
-                                <input name="dietary" value="No" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Let us know...">
+                        <div id="attendingFields">
+                            <!-- Dietary requirements -->
+                            <div class="flex flex-wrap -mx-5 mb-6">
+                                <div class="w-full px-5">
+                                    <label>
+                                        <span>Do you have any dietary requirements?</span>
+                                    </label>
+                                    <input name="dietary" value="No" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-5 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Let us know...">
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Main dish -->
-                        <div class="flex flex-wrap -mx-5 mb-6">
-                            <div class="w-full px-5">
-                                <label>
-                                    <span>Please select your main dish:</span>
-                                </label>
-                                <div class="relative">
-                                    <select name="dish" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                        <option>Pork tenderloin with whiskey and garlic sauce (Solomillo al Whiskey)</option>
-                                        <option>Sea bass with potatoes, citrus butter, basil and pine nuts</option>
-                                        <option>Truffle and cheese ravioli with red pesto (Veggie)</option>
-                                    </select>
-                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                            <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
-                                        </svg>
+    
+                            <!-- Main dish -->
+                            <div class="flex flex-wrap -mx-5 mb-6">
+                                <div class="w-full px-5">
+                                    <label>
+                                        <span>Please select your main dish:</span>
+                                    </label>
+                                    <div class="relative">
+                                        <select name="dish" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+                                            <option value="" disabled selected hidden>Select a main dish</option>
+                                            <option>Pork tenderloin with whiskey and garlic sauce (Solomillo al Whiskey)</option>
+                                            <option>Sea bass with potatoes, citrus butter, basil and pine nuts</option>
+                                            <option>Truffle and cheese ravioli with red pesto (Veggie)</option>
+                                        </select>
+                                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                                            </svg>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Drinks on Friday -->
-                        <div class="flex flex-wrap -mx-5 mb-6">
-                            <div class="w-full px-5">
-                                <label>
-                                    <span>For rough numbers, do you think you'll join us for drinks on the Friday?</span>
-                                </label>
-                                <div class="flex space-x-4">
-                                    <label class="inline-flex items-center">
-                                        <input name="drinks" type="radio" name="drinks" value="yes" class="form-radio" required>
-                                        <span class="px-2">Yes</span>
+    
+                            <!-- Drinks on Friday -->
+                            <div class="flex flex-wrap -mx-5 mb-6">
+                                <div class="w-full px-5">
+                                    <label>
+                                        <span>For rough numbers, do you think you'll join us for drinks on the Friday?</span>
                                     </label>
-                                    <label class="inline-flex items-center">
-                                        <input name="drinks" type="radio" name="drinks" value="no" class="form-radio">
-                                        <span class="px-2">No</span>
-                                    </label>
+                                    <div class="flex space-x-4">
+                                        <label class="inline-flex items-center">
+                                            <input name="drinks" type="radio" name="drinks" value="yes" class="form-radio" required>
+                                            <span class="px-2">Yes</span>
+                                        </label>
+                                        <label class="inline-flex items-center">
+                                            <input name="drinks" type="radio" name="drinks" value="no" class="form-radio">
+                                            <span class="px-2">No</span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <!-- Email -->
-                        <div class="flex flex-wrap -mx-5 mb-6">
-                            <div class="w-full px-5">
-                                <label>
-                                    <span>Email address:</span>
-                                </label>
-                                <input name="email" required class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Email">
+    
+                            <!-- Email -->
+                            <div class="flex flex-wrap -mx-5 mb-6">
+                                <div class="w-full px-5">
+                                    <label>
+                                        <span>Email address:</span>
+                                    </label>
+                                    <input name="email" required class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Email">
+                                </div>
                             </div>
                         </div>
 

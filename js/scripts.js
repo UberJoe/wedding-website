@@ -40,49 +40,108 @@ document.getElementById('rsvpForm').addEventListener('submit', async function (e
   const data = Object.fromEntries(formData.entries());
   const errors = [];
 
+  // Always required
   if (!data.firstname?.trim()) errors.push('First name is required.');
   if (!data.surname?.trim()) errors.push('Surname is required.');
   if (!['yes', 'no'].includes(data.attending)) errors.push('Attendance must be yes or no.');
-  if (!['yes', 'no'].includes(data.drinks)) errors.push('Drinks choice must be yes or no.');
-  if (!data.dish) errors.push('Please select a dish.');
 
-  const email = data.email?.trim();
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailRegex.test(email)) {
-    errors.push('Please enter a valid email address.');
+  const isAttending = data.attending === 'yes';
+
+  if (isAttending) {
+    if (!['yes', 'no'].includes(data.drinks)) {
+      errors.push('Drinks choice must be yes or no.');
+    }
+
+    if (!data.dish?.trim()) {
+      errors.push('Please select a dish.');
+    }
+
+    const email = data.email?.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email)) {
+      errors.push('Please enter a valid email address.');
+    }
+
+    if (!['webster', 'james'].includes(data.security?.trim().toLowerCase())) {
+      errors.push('Security answer is incorrect.');
+    }
   }
 
-  if (!['webster', 'james'].includes(data.security?.trim().toLowerCase())) {
-    errors.push('Security answer is incorrect.');
+  // If not attending, still validate security if the field is visible
+  if (!isAttending && data.security?.trim()) {
+    if (!['webster', 'james'].includes(data.security?.trim().toLowerCase())) {
+      errors.push('Security answer is incorrect.');
+    }
   }
 
   if (errors.length > 0) {
     responseMessage.textContent = errors.join(' ');
-    responseMessage.style = "color: red;"
+    responseMessage.style = "color: red;";
     return;
   }
 
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: new URLSearchParams(data)
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams(data)
+    });
+
+    const result = await res.json();
+
+    if (result.success) {
+      responseMessage.textContent = result.message;
+      responseMessage.style = "color: green;";
+      form.reset();
+    } else {
+      responseMessage.textContent = result.error || 'Something went wrong.';
+      responseMessage.style = "color: red;";
+    }
+  } catch (err) {
+    responseMessage.textContent = 'A network error occurred.';
+    responseMessage.style = "color: red;";
+  }
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const attendingRadios = document.querySelectorAll('input[name="attending"]');
+  const attendingFieldsContainer = document.getElementById('attendingFields');
+
+  const conditionalFields = [
+      'dietary',
+      'dish',
+      'drinks',
+      'email',
+      'security'
+  ].map(name => document.querySelector(`[name="${name}"]`));
+
+  const drinksRadios = document.querySelectorAll('input[name="drinks"]');
+
+  function toggleRequiredAndVisibility() {
+      const attendingValue = document.querySelector('input[name="attending"]:checked')?.value;
+      const shouldRequire = attendingValue === 'yes';
+
+      conditionalFields.forEach(field => {
+          if (field) {
+              field.required = shouldRequire;
+          }
       });
 
-      const result = await res.json();
+      drinksRadios.forEach(radio => {
+          radio.required = shouldRequire;
+      });
 
-      if (result.success) {
-        responseMessage.textContent = result.message;
-        responseMessage.style = "color: green;"
-        form.reset(); // Optional: clear the form
-      } else {
-        responseMessage.textContent = result.error || 'Something went wrong.';
-        responseMessage.style = "color: red;"
-      }
-    } catch (err) {
-      responseMessage.textContent = 'A network error occurred.';
-      responseMessage.style = "color: red;"
-    }
+      // Show/hide the attending fields
+      attendingFieldsContainer.style.display = shouldRequire ? 'block' : 'none';
+  }
+
+  attendingRadios.forEach(radio => {
+      radio.addEventListener('change', toggleRequiredAndVisibility);
   });
+
+  // Initialize on page load
+  toggleRequiredAndVisibility();
+});
