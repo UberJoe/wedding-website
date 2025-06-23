@@ -7,7 +7,6 @@ section.features-extra, section.rsvp, section.date, section.title, section.nav, 
 	color: $text-dark;
 	a {
 		color: $text-dark;
-		text-decoration: underline;
 		&:hover {
 		  color: $text-dark-hover;
 		}
@@ -23,7 +22,6 @@ section.features, section.events, section.blog, section.itinerary, section.accom
 
 	a {
 		color: $text-light;
-		text-decoration: underline;
 		&:hover {
 		  color: $text-light-hover;
 		}
