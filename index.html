@@ -174,13 +174,13 @@
                                 <label>
                                     <span>First Name:</span>
                                 </label>
-                                <input name="firstname" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="First Name">
+                                <input name="firstname" required class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="First Name">
                             </div>
                             <div class="md:w-1/2 md:px-5">
                                 <label>
                                     <span>Surname:</span>
                                 </label>
-                                <input name="surname" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Surname">
+                                <input name="surname" required class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Surname">
                             </div>
                         </div>
 
@@ -192,7 +192,7 @@
                                 </label>
                                 <div class="flex space-x-4">
                                     <label class="inline-flex items-center">
-                                        <input name="attending" type="radio" name="attending" value="yes" class="form-radio">
+                                        <input name="attending" type="radio" name="attending" value="yes" class="form-radio" required>
                                         <span class="px-2">Yes</span>
                                     </label>
                                     <label class="inline-flex items-center">
@@ -209,7 +209,7 @@
                                 <label>
                                     <span>Do you have any dietary requirements?</span>
                                 </label>
-                                <input name="dietary" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Let us know...">
+                                <input name="dietary" value="No" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Let us know...">
                             </div>
                         </div>
 
@@ -242,7 +242,7 @@
                                 </label>
                                 <div class="flex space-x-4">
                                     <label class="inline-flex items-center">
-                                        <input name="drinks" type="radio" name="drinks" value="yes" class="form-radio">
+                                        <input name="drinks" type="radio" name="drinks" value="yes" class="form-radio" required>
                                         <span class="px-2">Yes</span>
                                     </label>
                                     <label class="inline-flex items-center">
@@ -253,13 +253,23 @@
                             </div>
                         </div>
 
+                        <!-- Email -->
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                            <div class="w-full">
+                                <label>
+                                    <span>Email address:</span>
+                                </label>
+                                <input name="email" required class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Email">
+                            </div>
+                        </div>
+
                         <!-- Security question -->
                         <div class="flex flex-wrap -mx-3 mb-6">
                             <div class="w-full">
                                 <label>
                                     <span>Security question: please enter either Eve or Joe's surname</span>
                                 </label>
-                                <input name="security" class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Surname">
+                                <input name="security" required class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="text" placeholder="Surname">
                             </div>
                         </div>
 
@@ -271,7 +281,7 @@
                                 </button>
                             </div>
                         </div>
-
+                        <div class="flex flex-wrap -mx-3 text-center"><p id="responseMessage"></p></div>
                     </form>
                 </div>
             </div>

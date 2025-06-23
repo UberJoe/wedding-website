@@ -16,8 +16,6 @@ app.listen(PORT, () => {
 });
 
 app.post('/submit', express.urlencoded({ extended: true }), async (req, res) => {
-	const token = process.env.GTOKEN;
-
 	const {
 		attending,
 		drinks,
@@ -25,49 +23,72 @@ app.post('/submit', express.urlencoded({ extended: true }), async (req, res) => 
 		surname,
 		dietary,
 		dish,
-		security
+		security,
+		email
 	} = req.body;
 
-	// Lowercase and trim the user's answer
-    const answer = (security || '').trim().toLowerCase();
+	const answer = (security || '').trim().toLowerCase();
+	const validAnswers = ['webster', 'james'];
 
-    // Define accepted answers (in lowercase)
-    const validAnswers = ['webster', 'james']; // adjust as needed
+	// Validate required fields
+	if (!firstname || !surname) {
+	return res.status(400).json({ success: false, error: 'Name is required.' });
+	}
 
-    if (!validAnswers.includes(answer)) {
-        return res.status(403).json({
-            success: false,
-            error: 'Security answer is incorrect.'
-        });
-    }
+	if (!attending || !['yes', 'no'].includes(attending)) {
+	return res.status(400).json({ success: false, error: 'Attendance must be yes or no.' });
+	}
 
+	if (!drinks || !['yes', 'no'].includes(drinks)) {
+	return res.status(400).json({ success: false, error: 'Drinks must be yes or no.' });
+	}
+
+	if (!dish || typeof dish !== 'string' || dish.length < 5) {
+	return res.status(400).json({ success: false, error: 'Please select a valid dish.' });
+	}
+
+	if (!validAnswers.includes(answer)) {
+	return res.status(403).json({ success: false, error: 'Security answer is incorrect.' });
+	}
+
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	if (!email || !emailRegex.test(email.trim())) {
+		return res.status(400).json({ success: false, error: 'Invalid email address.' });
+	}
+
+	const cleanEmail = email.trim();
+	const cleanFirst = firstname.trim();
+	const cleanLast = surname.trim();
+	const cleanDiet = (dietary || '').trim();
 
 	const payload = {
-		secret: token,
-		firstname,
-		surname,
+		secret: process.env.GTOKEN,
+		firstname: cleanFirst,
+		surname: cleanLast,
+		email: cleanEmail,
 		attending,
-		dietary,
+		dietary: cleanDiet,
 		dish,
 		drinks
 	};
 
 	try {
-		const result = await fetch('https://script.google.com/macros/s/AKfycbw2QqiWj6247hOH-7mbKIyOkZe3Kp_HA98McuebVLGfw1PRbKKE6x49b258KsToQRmW/exec', {
-			method: 'POST',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify(payload)
-		});
+	const result = await fetch('https://script.google.com/macros/s/AKfycbyLLqb-OaGLnO7w2PCMsXvAI9v9fwmDNGBp_T3gB9Pqi_UtjmqihoSLcFzV_duLse-p/exec', {
+		method: 'POST',
+		headers: { 'Content-Type': 'application/json' },
+		body: JSON.stringify(payload)
+	});
 
-        const data = await result.text();
-	    console.log('Response from Google Script:', data);
+	const data = await result.text();
+	console.log('Response from Google Script:', data);
 
-		res.json({ success: true, message: 'Submitted successfully' });
+	res.json({ success: true, message: 'Submitted successfully' });
 	} catch (err) {
-		console.error(err);
-		res.status(500).json({ success: false, error: 'Submission failed' });
+	console.error(err);
+	res.status(500).json({ success: false, error: 'Submission failed' });
 	}
 });
+
 
 
 exports.printMsg = function() {

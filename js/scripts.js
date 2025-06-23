@@ -30,13 +30,37 @@ $(document).ready(function () {
 });
 
 document.getElementById('rsvpForm').addEventListener('submit', async function (e) {
-    e.preventDefault(); // Stop the form from submitting the default way
+  e.preventDefault();
+  const responseMessage = document.getElementById('responseMessage');
+  responseMessage.textContent = "Submitting...";
+  responseMessage.style = "color:green;";
 
-    const form = e.target;
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+  const form = e.target;
+  const formData = new FormData(form);
+  const data = Object.fromEntries(formData.entries());
+  const errors = [];
 
-    const responseMessage = document.getElementById('responseMessage');
+  if (!data.firstname?.trim()) errors.push('First name is required.');
+  if (!data.surname?.trim()) errors.push('Surname is required.');
+  if (!['yes', 'no'].includes(data.attending)) errors.push('Attendance must be yes or no.');
+  if (!['yes', 'no'].includes(data.drinks)) errors.push('Drinks choice must be yes or no.');
+  if (!data.dish) errors.push('Please select a dish.');
+
+  const email = data.email?.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email)) {
+    errors.push('Please enter a valid email address.');
+  }
+
+  if (!['webster', 'james'].includes(data.security?.trim().toLowerCase())) {
+    errors.push('Security answer is incorrect.');
+  }
+
+  if (errors.length > 0) {
+    responseMessage.textContent = errors.join(' ');
+    responseMessage.style = "color: red;"
+    return;
+  }
 
     try {
       const res = await fetch(form.action, {
@@ -51,14 +75,14 @@ document.getElementById('rsvpForm').addEventListener('submit', async function (e
 
       if (result.success) {
         responseMessage.textContent = result.message;
-        responseMessage.className = 'mt-4 text-green-600 text-sm font-medium';
+        responseMessage.style = "color: green;"
         form.reset(); // Optional: clear the form
       } else {
         responseMessage.textContent = result.error || 'Something went wrong.';
-        responseMessage.className = 'mt-4 text-red-600 text-sm font-medium';
+        responseMessage.style = "color: red;"
       }
     } catch (err) {
       responseMessage.textContent = 'A network error occurred.';
-      responseMessage.className = 'mt-4 text-red-600 text-sm font-medium';
+      responseMessage.style = "color: red;"
     }
   });
