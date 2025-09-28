@@ -101,34 +101,31 @@ a.btn {
 .btn-margin-right {
   margin-right: 20px;
 }
-section.features-extra,section.rsvp,section.date,section.title,section.nav,section.travel,section.faq,section.recommendations {
+section.features-extra,section.date,section.title,section.nav,section.faq,section.recommendations,section.itinerary-wedding {
   background: #f4eddf;
   color: #4a5979;
 }
-section.features-extra a,section.rsvp a,section.date a,section.title a,section.nav a,section.travel a,section.faq a,section.recommendations a {
+section.features-extra a,section.date a,section.title a,section.nav a,section.faq a,section.recommendations a,section.itinerary-wedding a {
   color: #4a5979;
 }
-section.features-extra a:hover,section.rsvp a:hover,section.date a:hover,section.title a:hover,section.nav a:hover,section.travel a:hover,section.faq a:hover,section.recommendations a:hover {
+section.features-extra a:hover,section.date a:hover,section.title a:hover,section.nav a:hover,section.faq a:hover,section.recommendations a:hover,section.itinerary-wedding a:hover {
   color: #4897db;
 }
-section.features-extra hr,section.rsvp hr,section.date hr,section.title hr,section.nav hr,section.travel hr,section.faq hr,section.recommendations hr {
+section.features-extra hr,section.date hr,section.title hr,section.nav hr,section.faq hr,section.recommendations hr,section.itinerary-wedding hr {
   border-color: #4a5979;
 }
-section.features,section.events,section.blog,section.itinerary,section.accommodation,section.party,footer {
+section.features,section.events,section.blog,section.itinerary-drinks,section.party,footer {
   background: #a7c3dc;
   color: #4a5979;
 }
-section.features a,section.events a,section.blog a,section.itinerary a,section.accommodation a,section.party a,footer a {
+section.features a,section.events a,section.blog a,section.itinerary-drinks a,section.party a,footer a {
   color: #4a5979;
 }
-section.features a:hover,section.events a:hover,section.blog a:hover,section.itinerary a:hover,section.accommodation a:hover,section.party a:hover,footer a:hover {
+section.features a:hover,section.events a:hover,section.blog a:hover,section.itinerary-drinks a:hover,section.party a:hover,footer a:hover {
   color: rgb(54.6461538462,65.7230769231,89.3538461538);
 }
-section.features hr,section.events hr,section.blog hr,section.itinerary hr,section.accommodation hr,section.party hr,footer hr {
+section.features hr,section.events hr,section.blog hr,section.itinerary-drinks hr,section.party hr,footer hr {
   border-color: #4a5979;
-}
-.pointer-events-none {
-  pointer-events: none;
 }
 .collapse {
   visibility: collapse;
@@ -151,17 +148,11 @@ section.features hr,section.events hr,section.blog hr,section.itinerary hr,secti
 .container {
   width: 100%;
 }
-.mx-auto {
-  margin-inline: auto;
-}
 .block {
   display: block;
 }
 .contents {
   display: contents;
-}
-.flex {
-  display: flex;
 }
 .grid {
   display: grid;
@@ -175,20 +166,11 @@ section.features hr,section.events hr,section.blog hr,section.itinerary hr,secti
 .inline-block {
   display: inline-block;
 }
-.inline-flex {
-  display: inline-flex;
-}
 .table {
   display: table;
 }
 .h-auto {
   height: auto;
-}
-.w-1\/2 {
-  width: calc(1/2 * 100%);
-}
-.w-full {
-  width: 100%;
 }
 .max-w-full {
   max-width: 100%;
@@ -199,26 +181,15 @@ section.features hr,section.events hr,section.blog hr,section.itinerary hr,secti
 .resize {
   resize: both;
 }
-.appearance-none {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
+.grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
-.flex-wrap {
-  flex-wrap: wrap;
-}
-.items-center {
-  align-items: center;
-}
 .border {
   border-style: var(--tw-border-style);
   border-width: 1px;
-}
-.fill-current {
-  fill: currentcolor;
 }
 .text-center {
   text-align: center;
@@ -242,12 +213,6 @@ section.features hr,section.events hr,section.blog hr,section.itinerary hr,secti
   transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, visibility, content-visibility, overlay, pointer-events;
   transition-timing-function: var(--tw-ease, ease);
   transition-duration: var(--tw-duration, 0s);
-}
-.focus\:outline-none {
-  &:focus {
-    --tw-outline-style: none;
-    outline-style: none;
-  }
 }
 .group:after {
   content: "";
@@ -905,6 +870,95 @@ header .member-actions {
 }
 #video-content p {
   color: #fff;
+}
+.itinerary-wedding {
+  padding: 5rem 1rem;
+}
+.itinerary-wedding .itinerary-grid {
+  text-align: initial;
+  max-width: 960px;
+  margin: 0 auto 2.5rem;
+  position: relative;
+}
+.itinerary-wedding .itinerary-grid::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: currentColor;
+  opacity: .3;
+  transform: translateX(-50%);
+}
+.itinerary-wedding .itinerary-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "text icon";
+  align-items: center;
+  gap: 2rem;
+  margin: 1.5rem 0;
+  position: relative;
+}
+.itinerary-wedding .itinerary-item:nth-child(even) {
+  grid-template-areas: "icon text";
+}
+.itinerary-wedding .itinerary-item .text-itn {
+  grid-area: text;
+  text-align: right;
+  justify-self: end;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+.itinerary-wedding .itinerary-item .icon {
+  grid-area: icon;
+  justify-self: start;
+  text-align: initial;
+}
+.itinerary-wedding .itinerary-item .icon img {
+  display: block;
+  width: 125px;
+  height: auto;
+}
+.itinerary-wedding .itinerary-item::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  background: inherit;
+  z-index: 2;
+}
+.itinerary-wedding .itinerary-item:nth-child(even) .text-itn {
+  text-align: left;
+  justify-self: start;
+}
+.itinerary-wedding .itinerary-item:nth-child(even) .icon {
+  justify-self: end;
+}
+@media (max-width: 767px) {
+  .itinerary-wedding .itinerary-grid::before {
+    left: 8px;
+    transform: none;
+  }
+  .itinerary-wedding .itinerary-item {
+    grid-template-columns: 1fr;
+    grid-template-areas: "text" "icon";
+    gap: .75rem 0;
+  }
+  .itinerary-wedding .itinerary-item .text-itn,.itinerary-wedding .itinerary-item .icon {
+    justify-self: start !important;
+    text-align: left !important;
+  }
+  .itinerary-wedding .itinerary-item::after {
+    left: 0;
+    transform: translateY(-50%);
+  }
 }
 #map-canvas {
   height: 500px;

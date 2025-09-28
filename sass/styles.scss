@@ -798,6 +798,126 @@ Embed video
 }
 
 /* ==========================================================================
+Itinerary - Wedding
+========================================================================== */
+.itinerary-wedding {
+  padding: 5rem 1rem;
+
+  /* --- Timeline container --- */
+  .itinerary-grid {
+    text-align: initial; /* kill Bootstrap centering */
+
+    max-width: 960px;
+    margin: 0 auto 2.5rem;
+    position: relative;
+
+    /* vertical divider */
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: currentColor;
+      opacity: .3;
+      transform: translateX(-50%);
+    }
+  }
+
+  /* --- One row --- */
+  .itinerary-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;      /* left | right */
+    grid-template-areas: "text icon";
+    align-items: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+    position: relative;
+
+    /* flip even rows */
+    &:nth-child(even) {
+      grid-template-areas: "icon text";
+    }
+
+    /* text side (time + event together) */
+    .text-itn {
+      grid-area: text;
+      text-align: right;
+      justify-self: end;
+
+      display: flex;
+      flex-direction: column;
+      gap: .25rem;
+    }
+
+    /* icon side */
+    .icon {
+      grid-area: icon;
+      justify-self: start;
+      text-align: initial;
+    }
+
+    .icon img {
+      display: block;
+      width: 125px;
+      height: auto;
+    }
+
+    /* Dot aligned to the divider */
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      border: 2px solid currentColor;
+      border-radius: 50%;
+      background: inherit;
+      z-index: 2;
+    }
+
+    /* flip alignments for even rows */
+    &:nth-child(even) {
+      .text-itn {
+        text-align: left;
+        justify-self: start;
+      }
+      .icon { justify-self: end; }
+    }
+  }
+
+  /* --- Mobile stack --- */
+  @media (max-width: 767px) {
+    .itinerary-grid::before {
+      left: 8px;
+      transform: none;
+    }
+
+    .itinerary-item {
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "text"
+        "icon";
+      gap: .75rem 0;
+
+      .text-itn,
+      .icon {
+        justify-self: start !important;
+        text-align: left !important;
+      }
+
+      &::after {
+        left: 0;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+/* ==========================================================================
 Google map
 ========================================================================== */
 #map-canvas {

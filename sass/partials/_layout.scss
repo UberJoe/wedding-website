@@ -2,7 +2,7 @@
 
 $section-padding: 40px 0;
 
-section.features-extra, section.date, section.title, section.nav, section.faq, section.recommendations {
+section.features-extra, section.date, section.title, section.nav, section.faq, section.recommendations, section.itinerary-wedding {
 	background: $section-light;
 	color: $text-dark;
 	a {
@@ -16,7 +16,7 @@ section.features-extra, section.date, section.title, section.nav, section.faq, s
 	}
 }
 
-section.features, section.events, section.blog, section.itinerary, section.party, footer {
+section.features, section.events, section.blog, section.itinerary-drinks, section.party, footer {
 	background: $section-dark;
 	color: $text-light;
 
