@@ -154,6 +154,9 @@ section.features hr,section.events hr,section.blog hr,section.itinerary-drinks h
 .contents {
   display: contents;
 }
+.flex {
+  display: flex;
+}
 .grid {
   display: grid;
 }
@@ -181,11 +184,14 @@ section.features hr,section.events hr,section.blog hr,section.itinerary-drinks h
 .resize {
   resize: both;
 }
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.justify-center {
+  justify-content: center;
 }
 .border {
   border-style: var(--tw-border-style);
@@ -942,22 +948,11 @@ header .member-actions {
   justify-self: end;
 }
 @media (max-width: 767px) {
-  .itinerary-wedding .itinerary-grid::before {
-    left: 8px;
-    transform: none;
-  }
   .itinerary-wedding .itinerary-item {
-    grid-template-columns: 1fr;
-    grid-template-areas: "text" "icon";
-    gap: .75rem 0;
+    gap: 1rem;
   }
-  .itinerary-wedding .itinerary-item .text-itn,.itinerary-wedding .itinerary-item .icon {
-    justify-self: start !important;
-    text-align: left !important;
-  }
-  .itinerary-wedding .itinerary-item::after {
-    left: 0;
-    transform: translateY(-50%);
+  .itinerary-wedding .itinerary-item .icon img {
+    width: 80px;
   }
 }
 #map-canvas {

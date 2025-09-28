@@ -891,27 +891,11 @@ Itinerary - Wedding
 
   /* --- Mobile stack --- */
   @media (max-width: 767px) {
-    .itinerary-grid::before {
-      left: 8px;
-      transform: none;
-    }
-
     .itinerary-item {
-      grid-template-columns: 1fr;
-      grid-template-areas:
-        "text"
-        "icon";
-      gap: .75rem 0;
+      gap: 1rem;
 
-      .text-itn,
-      .icon {
-        justify-self: start !important;
-        text-align: left !important;
-      }
-
-      &::after {
-        left: 0;
-        transform: translateY(-50%);
+      .icon img {
+        width: 80px; /* scale down icon */
       }
     }
   }
